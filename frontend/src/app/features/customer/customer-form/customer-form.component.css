@@ -1,0 +1,198 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding: 40px;
+}
+
+.form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+.form-container h2 {
+    margin: 0 0 24px;
+    font-size: 22px;
+    font-weight: 400;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+}
+
+.form-group .help-text {
+    display: block;
+    margin-top: 2px;
+    font-size: 12px;
+    color: #666;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fafafa;
+    box-sizing: border-box;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #1976d2;
+    box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.2);
+    background-color: #fff;
+}
+
+.section-title {
+    margin-top: 32px;
+    margin-bottom: 16px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+}
+
+.address-section {
+    background-color: #f9f9f9;
+    padding: 16px;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+}
+
+.address-row {
+    display: grid;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.address-primary {
+    grid-template-columns: 2fr 1fr;
+}
+
+.address-main {
+    grid-template-columns: 2fr 1fr 1fr;
+}
+
+.address-location {
+    grid-template-columns: 1fr 2fr;
+}
+
+.address-actions {
+    margin-top: 8px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.address-actions button {
+    padding: 8px 16px;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    background-color: #283e4a;
+    color: #fff;
+    cursor: pointer;
+}
+
+.address-actions button:hover {
+    background-color: #1f2c34;
+}
+
+.form-actions {
+    margin-top: 30px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.form-actions button {
+    padding: 10px 18px;
+    font-size: 14px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn-save {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.btn-cancel {
+    background-color: #ccc;
+    color: #333;
+}
+
+.btn-save:hover {
+    background-color: #45a049;
+}
+
+.btn-cancel:hover {
+    background-color: #b3b3b3;
+}
+
+.error {
+    color: red;
+    font-size: 13px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+
+.error-message {
+    color: #ffffff;
+    font-size: 14px;
+    margin-top: 5px;
+    padding: 20px;
+    background-color: rgb(133, 33, 33);
+    font-weight: bold;
+}
+
+input.ng-invalid.ng-touched {
+    border: red 1px solid;
+}
+
+.input-wrapper {
+    position: relative;
+    width: 100%;
+  }
+
+  .ie-input {
+    width: 100%;
+    padding-right: 100px; /* espaço para o checkbox + texto */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    height: 40px;
+    box-sizing: border-box;
+  }
+
+  .ie-checkbox-wrapper {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 14px;
+  }
+
+  label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+  }

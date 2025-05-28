@@ -1,0 +1,128 @@
+<div class="form-container">
+    <h2>Cadastro de Cliente</h2>
+    <form [formGroup]="customerForm">
+
+        <div class="form-group">
+            <label for="customerType">Tipo</label>
+            <select formControlName="customerType" id="customerType" name="customerType" required>
+                <option [value]="">Selecione...</option>
+                <option [value]=1>Pessoa Física</option>
+                <option [value]=2>Pessoa Jurídica</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="name">Nome</label>
+            <input formControlName="name" type="text" id="name" name="name" required />
+        </div>
+
+        <div class="form-group">
+            <label for="documentNumber">{{isCompany() ? 'CNPJ' : 'CPF'}}</label>
+            <input formControlName="documentNumber" type="text" id="documentNumber" name="documentNumber" required />
+        </div>
+
+        <div *ngIf="isCompany()">
+            <label for="ie-number">IE</label>
+            <div class="input-wrapper">
+                <input type="text" formControlName="registerNumber" id="registerNumber" class="ie-input" />
+                <div class="ie-checkbox-wrapper">
+                    <input (change)="fillRegisterNumber($event)" type="checkbox" id="isento" title="Isento" />
+                    <label for="isento" style="margin: 0;">Isento</label>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            <label for="birthDate">{{isCompany() ? 'Data de abertura' : 'Data de nascimento'}}</label>
+            <input formControlName="birthDate" type="date" id="birthDate" name="birthDate" required />
+        </div>
+
+        <div class="form-group">
+            <label for="cellphone">Celular</label>
+            <input formControlName="cellphone" type="tel" id="cellphone" name="cellphone" placeholder="(xx) xxxxx-xxxx"
+                required />
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email</label>
+            <!-- <span class="help-text">Required, but never shown</span> -->
+            <input formControlName="email" type="email" id="email" name="email" required />
+        </div>
+
+        <div class="section-title">Endereço</div>
+        <div id="adddressList" formArrayName="addresses">
+            <div class="address-section" *ngFor="let address of addresses.controls; let i = index;">
+                <div [formGroupName]="i">
+                    <div class="address-row address-primary">
+                        <div class="form-group">
+                            <label for="addressName">Nome</label>
+                            <input type="text" formControlName="name" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="postalCode">Postal Code</label>
+                            <input (blur)="fillPostalCode(i)" type="text" formControlName="postalCode" id="postalCode"
+                                name="postalCode" placeholder="Postal Code" required />
+                        </div>
+                    </div>
+
+                    <div class="address-row address-main">
+                        <div class="form-group">
+                            <label for="logradouro">Logradouro</label>
+                            <input type="text" formControlName="street" id="street" name="street"
+                                placeholder="Logradouro" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="numero">Número</label>
+                            <input type="text" formControlName="number" id="number" name="number" placeholder="Nº"
+                                required />
+                        </div>
+                        <div class="form-group">
+                            <label for="complemento">Complemento</label>
+                            <input type="text" formControlName="complement" id="complement" name="complement"
+                                placeholder="Complemento" />
+                        </div>
+                    </div>
+
+                    <div class="address-row address-location">
+                        <div class="form-group">
+                            <label for="neighborhood">Bairro</label>
+                            <input type="text" formControlName="neighborhood" id="neighborhood" name="neighborhood"
+                                placeholder="Cidade" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="cidade">Cidade</label>
+                            <input type="text" formControlName="city" id="city" name="city" placeholder="Cidade"
+                                required />
+                        </div>
+                        <div class="form-group">
+                            <label for="state">Estado</label>
+                            <select id="state" formControlName="state">
+                                <option value="">Selecione um estado</option>
+                                <option *ngFor="let state of states" [value]="state.sigla">
+                                    {{ state.nome }}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="errorToAddAdddress" id="error-message-add-city" class="error-message">
+            {{errorToAddAdddress}}
+        </div>
+
+        <div class="address-actions">
+            <button type="button" (click)="addAddressFormGroup()">Adicionar Endereço</button>
+        </div>
+
+        <div *ngIf="errorToAddCustomer.length" id="error-message" class="error-message">
+            <p *ngFor="let error of errorToAddCustomer">{{error}}</p>
+        </div>
+
+        <div class="form-actions">
+            <button type="button" class="btn-save" (click)="save()">Salvar</button>
+            <button type="button" class="btn-cancel" (click)="cancelar()">Cancelar</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,30 @@
+<div class="header">
+    <h2>Clientes</h2>
+    <button class="new-client-btn" (click)="new()">Novo Cliente</button>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Tipo</th>
+        <th>CPF/CNPJ</th>
+        <th>Celular</th>
+        <th>Email</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let customer of customers">
+        <td>{{customer.name}}</td>
+        <td>{{customer.customerType == 2  ? 'Pessoa Jurídica' : 'Pessoa Física'}}</td>
+        <td>{{customer.documentNumber}}</td>
+        <td>{{customer.cellphone}}</td>
+        <td>{{customer.email}}</td>
+        <td>
+          <button type="button" class="edit-btn" (click)="edit(customer.id)">Editar</button>
+          <button type="button" class="delete-btn" (click)="remove(customer.id)">Remover</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
