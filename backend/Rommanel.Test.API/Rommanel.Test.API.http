@@ -1,0 +1,6 @@
+@Rommanel.Test.API_HostAddress = http://localhost:5127
+
+GET {{Rommanel.Test.API_HostAddress}}/swagger/index.html
+Accept: application/json
+
+###
